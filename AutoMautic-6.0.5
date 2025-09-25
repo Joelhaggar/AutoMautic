@@ -56,8 +56,8 @@ LOG_FILE="$(pwd)/AutoMautic_install.log"
 
 DOWNLOAD_URL_APACHE_VHOST="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Mautic/conf/apache/000-default.conf"
 DOWNLOAD_URL_CRON_JOBS="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Mautic/conf/cron/cronjobs"
-DOWNLOAD_URL_BASHRC="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Host/script/bashrc"
-DOWNLOAD_URL_HI5="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Host/script/hi5"
+# DOWNLOAD_URL_BASHRC="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Host/script/bashrc" # Removed to keep default bashrc
+# DOWNLOAD_URL_HI5="https://raw.githubusercontent.com/Martech-WorkShop/toolBelt/Prod/Host/script/hi5" # Removed to avoid ASCII art
 
 GREEN='\033[0;32m' # Positive outcomes, success messages
 RED='\033[0;31m' # Negative outcomes, errors, failures
@@ -423,10 +423,12 @@ sleep 2
 echo -e "\n\n Clearing the cache might take a minute or two, please be patient..."
 echo -e "\n\n"
 sudo -u www-data php /var/www/html/bin/console cache:clear || { echo -e " ${RED}Failed to clear Mautic cache ❌${NC}"; }
-wget "$DOWNLOAD_URL_BASHRC" -O ~/.bashrc || { echo -e " ${RED}Failed to download .bashrc ❌${NC}"; }
-wget "$DOWNLOAD_URL_HI5" -O /usr/local/bin/hi5 || { echo -e " ${RED}Failed to download hi5 ❌${NC}"; }
-chmod +x /usr/local/bin/hi5
-hi5
+# Bashrc download removed to keep default terminal settings
+# wget "$DOWNLOAD_URL_BASHRC" -O ~/.bashrc || { echo -e " ${RED}Failed to download .bashrc ❌${NC}"; }
+# ASCII art hi5 script removed to keep clean terminal
+# wget "$DOWNLOAD_URL_HI5" -O /usr/local/bin/hi5 || { echo -e " ${RED}Failed to download hi5 ❌${NC}"; }
+# chmod +x /usr/local/bin/hi5
+# hi5
 sleep 5
 
 
